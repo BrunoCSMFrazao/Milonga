@@ -1,0 +1,150 @@
+
+/* ========================================
+   MILONGA — ESTILO VISUAL DO JOGO
+   Brasil Games • 2026
+======================================== */
+
+/* ---------- CONFIGURAÇÕES GERAIS ---------- */
+
+:root {
+  font-family: "Courier New", monospace;
+  color: #f5e6bd;
+  background: #17251d;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --verde-escuro: #17251d;
+  --verde-campo: #344f35;
+  --verde-claro: #6d8b4b;
+  --dourado: #e7bd66;
+  --creme: #f5e6bd;
+  --madeira: #71462e;
+  --borda: #b98a4f;
+  --sombra: #101810;
+}
+
+/* ---------- RESET ---------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      ellipse at top,
+      #304936 0%,
+      #1d3023 48%,
+      #101a13 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  image-rendering: pixelated;
+}
+
+/* ---------- ÁREA PRINCIPAL ---------- */
+
+#app {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ---------- CANVAS DO PHASER ---------- */
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  border: 4px solid var(--borda);
+  outline: 2px solid #30251b;
+
+  background: #78c5e8;
+
+  box-shadow:
+    0 0 0 5px #19251a,
+    0 0 0 8px #5a3b28,
+    0 14px 0 #101710,
+    0 22px 35px rgb(0 0 0 / 45%);
+}
+
+/* ---------- SELEÇÃO DE TEXTO ---------- */
+
+::selection {
+  color: var(--verde-escuro);
+  background: var(--dourado);
+}
+
+/* ---------- BARRA DE ROLAGEM ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #17251d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6b5134;
+  border: 2px solid #17251d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dourado);
+}
+
+/* ---------- TELAS MENORES ---------- */
+
+@media (max-width: 700px) {
+  body {
+    padding: 12px;
+  }
+
+  #app {
+    gap: 12px;
+  }
+
+  canvas {
+    border-width: 3px;
+    box-shadow:
+      0 0 0 3px #19251a,
+      0 0 0 5px #5a3b28,
+      0 8px 0 #101710,
+      0 14px 22px rgb(0 0 0 / 40%);
+  }
+}
+
+/* ---------- TELAS MUITO PEQUENAS ---------- */
+
+@media (max-width: 400px) {
+  body {
+    padding: 6px;
+  }
+
+  canvas {
+    border-width: 2px;
+  }
+}
