@@ -1,40 +1,223 @@
 # MILONGA
+
 ## Documentação técnica, histórica e operacional do projeto
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data de atualização:** 16/10/2026  
-**Repositório GitHub:** https://github.com/BrunoCSMFrazao/Milonga.git  
+**Repositório:** https://github.com/BrunoCSMFrazao/Milonga.git  
 **Tecnologias:** JavaScript, Phaser e Vite  
 **Ambiente de desenvolvimento:** Windows, Visual Studio Code e PowerShell
 
-> **Nota:** Esta documentação reúne as informações registradas durante o desenvolvimento do Milonga. Os requisitos planejados são diferenciados das funcionalidades cuja implementação ainda precisa ser verificada diretamente no código e durante a execução do jogo.
-
 ---
 
-## 1. Visão geral do projeto
+## 1. Apresentação do projeto
 
-Milonga é um jogo digital em desenvolvimento, ambientado na vida rural do Rio Grande do Sul durante o século XIX.
+Milonga é um jogo 2D em desenvolvimento, ambientado na vida rural do Rio Grande do Sul durante o século XIX.
 
-A proposta visual utiliza pixel art clássico, inspirado em jogos antigos de Nintendo e Game Boy. O mundo do jogo representa a paisagem rural gaúcha, com campos, coxilhas, caminhos de terra, cercas, construções, animais e moradores realizando atividades cotidianas.
+A proposta é criar um ambiente rural vivo, inspirado na paisagem, na cultura e nos costumes gaúchos, com personagens que realizam atividades cotidianas, animais, construções e mudanças no ambiente ao longo do dia e da noite.
 
-O projeto utiliza JavaScript, Phaser e Vite. O desenvolvimento está organizado para permitir a evolução gradual do jogo, a correção de problemas visuais e comportamentais e a preservação das funcionalidades existentes.
+A identidade visual utiliza pixel art clássico, inspirado nos jogos antigos de Nintendo e Game Boy. O cenário deve apresentar elementos coerentes entre si, com proporções consistentes, pixels nítidos e uma composição visual que represente uma propriedade rural habitada.
 
-Uma ideia inicial do projeto também mencionava um jogo 2D de visão superior, combate por turnos inspirado em Pokémon e possibilidade de um modo história. A relação dessa proposta inicial com a versão rural atual deve ser confirmada por meio da inspeção do código existente.
+O desenvolvimento utiliza JavaScript, Phaser e Vite. A prioridade é construir o jogo gradualmente, preservar as funcionalidades existentes e corrigir os problemas sem comprometer a versão funcional.
 
-O princípio central do desenvolvimento é preservar as versões funcionais e realizar melhorias progressivas, evitando reescritas desnecessárias que possam comprometer o jogo.
+Uma ideia inicial também mencionava um jogo de visão superior, com combates por turnos inspirados em Pokémon e possibilidade de um modo história. A relação dessa proposta inicial com a direção rural atual deve ser confirmada na implementação existente.
 
-## 2. Identificação e ambiente técnico
+## 2. Objetivos do projeto
 
-- **Nome:** Milonga.
-- **Linguagem principal:** JavaScript.
-- **Framework de jogo:** Phaser.
-- **Ferramenta de desenvolvimento:** Vite.
-- **Editor:** Visual Studio Code.
-- **Sistema operacional de desenvolvimento:** Windows.
-- **Terminal utilizado:** PowerShell.
-- **Diretório local conhecido:** `C:\Users\Bruno\Desktop\Milonga`
-- **Repositório GitHub:** https://github.com/BrunoCSMFrazao/Milonga.git
-- **Crédito de copyright solicitado:** `© 2026 Brasil Games • Todos os direitos reservados`.
+O Milonga busca desenvolver um jogo com:
+
+- Cenário rural gaúcho inspirado no século XIX.
+- Paisagens com campos, coxilhas, vegetação nativa e caminhos de terra.
+- Construções rurais visualmente completas.
+- Personagens com movimentação, animações e atividades próprias.
+- Animais característicos de uma propriedade rural.
+- Ciclo de dia e noite com mudanças visuais e comportamentais.
+- Interações entre personagens, construções e ambiente.
+- Rotinas coerentes com a vida rural.
+- Identidade visual consistente em pixel art.
+- Código organizado e preparado para futuras melhorias.
+- Controle de versão para preservar o progresso e permitir a recuperação de versões anteriores.
+
+## 3. Identidade visual e direção artística
+
+### 3.1. Paisagem rural
+
+O cenário deve representar o interior do Rio Grande do Sul, com elementos como:
+
+- Campos e vegetação nativa do Pampa.
+- Coxilhas.
+- Caminhos de terra.
+- Cercas e porteiras de madeira.
+- Araucárias e outras árvores apropriadas ao ambiente.
+- Pastagens.
+- Lago ou açude.
+- Áreas destinadas aos animais.
+- Construções rurais e elementos do cotidiano.
+
+A composição deve transmitir a sensação de uma propriedade rural habitada, evitando cenários vazios ou elementos visualmente desconectados.
+
+### 3.2. Estilo pixel art
+
+Todos os elementos devem seguir uma linguagem visual consistente.
+
+Os principais critérios são:
+
+- Pixels nítidos e bem definidos.
+- Contornos legíveis.
+- Proporções coerentes entre personagens, animais e construções.
+- Paleta de cores consistente.
+- Animações compatíveis com o estilo.
+- Ausência de borrões e deformações indesejadas.
+- Textos legíveis e sem sobreposição.
+- Alinhamento correto dos objetos no cenário.
+
+### 3.3. Casa rural
+
+A casa é um dos elementos centrais do cenário.
+
+Sua estrutura deve apresentar paredes, telhado, portas e janelas completos, sem lacunas, transparências indevidas ou partes visualmente desconectadas.
+
+Um problema identificado durante o desenvolvimento está na parede próxima ao telhado, que apresenta aparência vazia ou incompleta. Esse ponto precisa ser verificado e corrigido na versão atual.
+
+Durante a manutenção da casa, devem ser analisados:
+
+- O desenho ou sprite utilizado.
+- A posição das paredes e do telhado.
+- A ordem de renderização dos elementos.
+- A opacidade e a transparência.
+- O alinhamento das partes.
+- As colisões e os pontos de entrada.
+- A iluminação durante a noite.
+
+A construção deve parecer sólida e completa, respeitando a perspectiva e o estilo visual do jogo.
+
+### 3.4. Personagens
+
+Os personagens devem apresentar vestimentas coerentes com a ambientação histórica.
+
+Entre as referências visuais estão bombachas e camisas para os homens e vestidos para as mulheres.
+
+A movimentação deve incluir animações perceptíveis dos braços, das pernas e do corpo. Os personagens não devem parecer deslizar pelo cenário sem movimentar os membros.
+
+As animações devem respeitar os estados dos personagens, incluindo caminhada, parada, mudança de direção e execução de atividades.
+
+### 3.5. Animais
+
+A propriedade deve incluir animais como:
+
+- Cavalos Crioulos.
+- Vacas.
+- Galinhas.
+
+Os animais devem contribuir para a sensação de um ambiente vivo. Seus comportamentos, deslocamentos e interações devem respeitar os sistemas existentes.
+
+Não se deve considerar um comportamento implementado sem confirmar sua presença no código e seu funcionamento durante a execução.
+
+## 4. Sistemas e comportamentos do jogo
+
+Os comportamentos descritos nesta seção representam os objetivos do projeto. A implementação efetiva de cada recurso deve ser confirmada por meio da análise do código e de testes.
+
+### 4.1. Ciclo de dia e noite
+
+O planejamento prevê aproximadamente 15 segundos de dia e 15 segundos de noite.
+
+O sistema deve contemplar:
+
+- Alternância contínua entre dia e noite.
+- Movimento do sol e da lua.
+- Transição entre iluminação diurna e noturna.
+- Escurecimento significativo do ambiente durante a noite.
+- Iluminação das janelas da casa, simulando um ambiente iluminado por lamparinas.
+- Efeito visual de vento, quando implementado.
+- Fumaça saindo da chaminé, quando implementada.
+
+O ciclo deve funcionar continuamente, sem interferir indevidamente nas animações e nos comportamentos dos personagens.
+
+A duração exata e o funcionamento de cada efeito precisam ser confirmados na versão atual.
+
+### 4.2. Atividades durante o dia
+
+Os adultos devem realizar atividades coerentes com a vida rural, evitando permanecer parados durante todo o dia.
+
+As ações podem envolver deslocamentos, trabalho na propriedade e interação com o ambiente, conforme os sistemas implementados.
+
+As animações devem acompanhar os movimentos e as atividades dos personagens.
+
+### 4.3. Comportamento durante a noite
+
+Durante a noite, os moradores devem seguir uma rotina de recolhimento para dentro da casa, deixando de aparecer no exterior após concluir a entrada.
+
+O comportamento planejado para o cavaleiro inclui:
+
+1. Desmontar do cavalo.
+2. Levar ou conduzir o cavalo até um local apropriado próximo da casa.
+3. Amarrar ou deixar o cavalo em local adequado, caso esse comportamento esteja implementado.
+4. Entrar na residência.
+
+As crianças também devem apresentar uma rotina noturna coerente com o planejamento do jogo.
+
+Esses comportamentos precisam ser verificados no código e durante a execução.
+
+### 4.4. Movimentação e animações
+
+As animações devem acompanhar os estados dos personagens, incluindo:
+
+- Caminhada.
+- Parada.
+- Mudança de direção.
+- Execução de atividades.
+- Entrada e saída de construções.
+- Outras ações que venham a ser implementadas.
+
+As alterações devem preservar colisões, limites do cenário, posições dos objetos e interações existentes.
+
+## 5. Identidade e interface
+
+O nome do jogo é **Milonga**.
+
+O crédito de copyright solicitado é:
+
+`© 2026 Brasil Games • Todos os direitos reservados`
+
+A frase definida para a tela de título é:
+
+> Luta-se por liberdade, derrama-se sangue e, mesmo na vitória, há perdas que jamais serão reparadas.
+
+A frase deve ser preservada quando fizer parte da versão atual da interface.
+
+Também foi trabalhada uma apresentação da página com fundo verde escuro, moldura em tom bege, sombras e canvas com aparência pixelada.
+
+É importante distinguir a interface da página dos elementos internos do jogo:
+
+- **HTML:** organiza a estrutura da página.
+- **CSS:** controla a apresentação da página e da área de jogo.
+- **Phaser:** controla cenas, personagens, objetos, animações e grande parte dos elementos visuais do mundo do jogo.
+
+Problemas em personagens, construções e paisagens normalmente exigem a análise do código da cena e dos recursos gráficos, e não apenas alterações no CSS.
+
+## 6. Tecnologias utilizadas
+
+### JavaScript
+
+Linguagem utilizada na lógica do jogo, no comportamento dos personagens e nos sistemas de atualização do ambiente.
+
+### Phaser
+
+Framework de desenvolvimento de jogos 2D, utilizado para trabalhar com cenas, sprites, animações, objetos e lógica de jogo.
+
+### Vite
+
+Ferramenta de desenvolvimento utilizada para executar a aplicação localmente e gerenciar o processo de desenvolvimento.
+
+### Visual Studio Code
+
+Editor utilizado para trabalhar nos arquivos do projeto.
+
+### PowerShell
+
+Terminal utilizado no ambiente Windows para executar comandos do projeto e do Git.
+
+### Comando de desenvolvimento
 
 O comando utilizado para iniciar o servidor de desenvolvimento é:
 
@@ -42,221 +225,13 @@ O comando utilizado para iniciar o servidor de desenvolvimento é:
 npm.cmd run dev
 ```
 
-Esse comando depende da existência de um script `dev` no arquivo `package.json`.
+A disponibilidade desse comando depende da existência de um script `dev` no arquivo `package.json`.
 
 O uso de `npm.cmd` permite executar o npm no PowerShell quando a política de execução do Windows impede a execução do script `npm.ps1`.
 
-## 3. Histórico do desenvolvimento
+## 7. Estrutura técnica do projeto
 
-### 3.1. Planejamento inicial
-
-O projeto foi planejado para utilizar JavaScript, Phaser e Vite, com uma estrutura que separasse os arquivos e sistemas do jogo.
-
-Entre as ideias iniciais estavam a visão superior, o combate por turnos inspirado em Pokémon e a possibilidade de um modo história.
-
-Ao longo do desenvolvimento, a direção visual passou a enfatizar a vida rural gaúcha, a ambientação histórica e as rotinas dos moradores.
-
-### 3.2. Criação e organização do projeto
-
-O projeto passou a utilizar arquivos comuns de uma aplicação Vite, incluindo:
-
-- `index.html`
-- `package.json`
-- `package-lock.json`
-- `vite.config.js`
-- `.gitignore`
-- `src/`
-- `public/`
-- `node_modules/`
-
-Também foram mencionadas pastas como `combat/`, `data/`, `game/` e `milonga-base/`.
-
-A estrutura real deve ser verificada no projeto para identificar a função de cada pasta e evitar duplicações ou conflitos.
-
-### 3.3. Direção visual rural
-
-A ambientação definida representa o interior do Rio Grande do Sul no século XIX.
-
-Os elementos planejados incluem:
-
-- Campos e vegetação do Pampa.
-- Coxilhas.
-- Caminhos de terra.
-- Cercas e porteiras de madeira.
-- Casa rural.
-- Açude ou lago.
-- Araucárias e vegetação nativa.
-- Cavalos Crioulos.
-- Vacas e galinhas.
-- Adultos realizando atividades rurais.
-- Crianças brincando durante o dia.
-
-Os personagens devem utilizar roupas coerentes com a época, como bombachas e camisas para os homens e vestidos para as mulheres.
-
-A escala, os contornos e a resolução dos elementos precisam permanecer consistentes para que todo o cenário pareça pertencer ao mesmo jogo.
-
-### 3.4. Ciclo de dia e noite
-
-Foi definido um ciclo ambiental desejado de aproximadamente 15 segundos de dia e 15 segundos de noite.
-
-Os comportamentos planejados incluem:
-
-- Alternância contínua entre dia e noite.
-- Movimento do sol e da lua.
-- Escurecimento significativo do cenário durante a noite.
-- Janelas iluminadas na casa.
-- Efeito visual de vento.
-- Fumaça saindo da chaminé, quando implementada.
-
-A duração e o funcionamento efetivos precisam ser confirmados na versão atual.
-
-### 3.5. Rotina dos moradores
-
-Foi solicitado que os adultos realizem atividades durante o dia, em vez de permanecerem parados no cenário.
-
-Também foi solicitada a animação dos braços e das pernas durante a caminhada, para tornar os movimentos mais naturais dentro das limitações do pixel art.
-
-Para o período noturno, o comportamento planejado é que os moradores entrem na casa e deixem de aparecer no exterior.
-
-A rotina do personagem montado a cavalo deve incluir:
-
-1. Desmontar do cavalo.
-2. Levar ou deixar o cavalo próximo da casa.
-3. Amarrar o cavalo, caso esse comportamento esteja implementado.
-4. Entrar na residência.
-
-As crianças devem brincar durante o dia. O comportamento noturno precisa seguir uma regra consistente, considerando a ideia de que elas entrem na casa para dormir.
-
-Esses comportamentos devem ser verificados no código e durante a execução do jogo.
-
-### 3.6. Problemas visuais identificados
-
-Um dos problemas relatados está na aparência da casa, especialmente na parede próxima ao telhado, que apresenta um aspecto visual vazio ou incompleto.
-
-A construção precisa parecer sólida, completa e opaca, sem lacunas acidentais ou transparências indesejadas.
-
-A correção deve preservar o estilo pixel art e respeitar a organização atual dos elementos da cena.
-
-### 3.7. Alteração que comprometeu o funcionamento
-
-Durante o desenvolvimento, uma substituição completa do arquivo principal `src/main.js` comprometeu o funcionamento do jogo.
-
-A versão anterior, considerada funcional, foi restaurada.
-
-Esse acontecimento estabeleceu uma regra importante: não substituir arquivos principais inteiros sem antes analisar seu conteúdo atual e compreender as funcionalidades existentes.
-
-As próximas alterações devem ser localizadas, controladas e reversíveis.
-
-### 3.8. Interface e CSS
-
-Foi trabalhado um CSS com layout responsivo, canvas com aparência pixelada, fundo verde escuro, moldura em tom bege e sombras.
-
-Entretanto, a aparência geral ainda precisava de melhorias.
-
-É importante separar os elementos da página dos elementos internos do jogo:
-
-- O HTML organiza a estrutura da página.
-- O CSS controla a apresentação da página e da área do jogo.
-- O Phaser controla a cena, os personagens, os objetos, as animações e grande parte dos elementos visuais do mundo do jogo.
-
-Por isso, problemas na casa, nos personagens ou na paisagem geralmente exigem a análise do código da cena e dos recursos gráficos utilizados, e não apenas alterações no CSS.
-
-## 4. Identidade visual e interface
-
-### 4.1. Estilo artístico
-
-O Milonga deve manter uma estética de pixel art clássico, inspirada nos jogos antigos de Nintendo e Game Boy.
-
-Requisitos visuais:
-
-- Pixels nítidos.
-- Contornos legíveis.
-- Proporções coerentes entre objetos e personagens.
-- Paleta de cores consistente.
-- Alinhamento dos elementos.
-- Animações compatíveis com o estilo.
-- Ausência de borrões ou deformações indesejadas.
-- Textos legíveis e sem sobreposição.
-
-### 4.2. Casa rural
-
-A casa deve apresentar paredes completas, telhado coerente, portas e janelas bem definidas.
-
-A construção não deve conter espaços vazios acidentais, paredes transparentes ou partes que pareçam não ter sido desenhadas.
-
-Durante a correção, devem ser verificados:
-
-- O método utilizado para desenhar ou carregar a casa.
-- A ordem de renderização do telhado e das paredes.
-- Os sprites, as imagens e as formas utilizadas.
-- A opacidade e a transparência.
-- O alinhamento dos componentes.
-- As colisões.
-- Os pontos de entrada e saída.
-- A iluminação durante a noite.
-
-### 4.3. Personagens
-
-Os personagens devem manter aparência coerente com a ambientação histórica.
-
-Os movimentos precisam ser reconhecíveis, com animações apropriadas para caminhada, parada e execução de atividades.
-
-As roupas, as proporções e os detalhes devem seguir a mesma linguagem visual do cenário.
-
-### 4.4. Título e crédito
-
-O nome do jogo é **Milonga**.
-
-O crédito solicitado para a interface é:
-
-`© 2026 Brasil Games • Todos os direitos reservados`
-
-Também foi definida a seguinte frase para a tela de título:
-
-> Luta-se por liberdade, derrama-se sangue e, mesmo na vitória, há perdas que jamais serão reparadas.
-
-A frase deve ser preservada quando fizer parte da versão atual da interface.
-
-## 5. Requisitos de funcionamento
-
-### 5.1. Ciclo ambiental
-
-| Funcionalidade | Resultado esperado | Situação |
-|---|---|---|
-| Alternância entre dia e noite | Ciclo contínuo | A confirmar |
-| Duração do ciclo | Aproximadamente 15 segundos para cada período | A confirmar |
-| Movimento do sol e da lua | Acompanhamento do ciclo | A confirmar |
-| Escurecimento noturno | Ambiente significativamente mais escuro | A confirmar |
-| Iluminação das janelas | Janelas iluminadas à noite | A confirmar |
-| Efeito de vento | Movimento visual da vegetação ou de outros elementos | A confirmar |
-| Fumaça da chaminé | Efeito ambiental | A confirmar |
-
-### 5.2. Comportamento dos moradores
-
-| Funcionalidade | Resultado esperado | Situação |
-|---|---|---|
-| Atividades dos adultos | Realização de tarefas durante o dia | Melhoria solicitada |
-| Animação de caminhada | Movimento dos braços e das pernas | Melhoria solicitada |
-| Entrada na casa | Moradores deixam o exterior durante a noite | A confirmar |
-| Rotina do cavaleiro | Desmontar, deixar o cavalo e entrar na casa | A confirmar |
-| Brincadeiras das crianças | Atividades durante o dia | A confirmar |
-| Rotina noturna das crianças | Entrada na casa durante a noite | A confirmar |
-
-### 5.3. Classificação das funcionalidades
-
-Para evitar confusões entre planejamento e implementação, cada funcionalidade deve ser classificada como:
-
-- **Confirmada no código:** existe uma implementação identificável.
-- **Testada:** o comportamento foi observado durante a execução.
-- **Parcial:** parte do comportamento está implementada.
-- **Pendente:** ainda precisa ser desenvolvida.
-- **Não verificada:** não existem informações suficientes para confirmar seu estado.
-
-Uma funcionalidade não deve ser considerada concluída apenas porque foi solicitada ou planejada.
-
-## 6. Estrutura técnica conhecida
-
-A estrutura aproximada registrada durante o desenvolvimento é:
+A estrutura registrada durante o desenvolvimento inclui os seguintes arquivos e diretórios:
 
 ```text
 Milonga/
@@ -276,9 +251,9 @@ Milonga/
 └── node_modules/
 ```
 
-Essa estrutura precisa ser comparada com os arquivos atuais antes de ser considerada definitiva.
+Essa estrutura é aproximada e deve ser comparada com os arquivos atuais antes de ser considerada definitiva.
 
-### 6.1. Arquivos principais
+### 7.1. Arquivos principais
 
 **`index.html`**
 
@@ -320,175 +295,239 @@ Pasta mencionada no histórico cuja finalidade e relação com a raiz do projeto
 
 Diretório de dependências instaladas. Normalmente não deve ser incluído no repositório Git.
 
-## 7. Procedimento de desenvolvimento
+A estrutura real, as dependências e as relações entre os módulos devem ser verificadas antes de novas alterações.
 
-O desenvolvimento deve seguir um processo controlado para preservar a versão funcional.
+## 8. Histórico do desenvolvimento
 
-### 7.1. Antes de alterar o código
+### 8.1. Planejamento inicial
 
-1. Abrir a pasta correta do projeto.
-2. Verificar o estado do Git.
-3. Identificar os arquivos relacionados ao problema.
-4. Ler o código atual.
-5. Entender as dependências entre os sistemas.
-6. Confirmar que existe uma versão funcional registrada.
-7. Planejar a alteração antes de executá-la.
+O projeto foi planejado para utilizar JavaScript, Phaser e Vite, com uma estrutura que separasse os arquivos e sistemas do jogo.
 
-### 7.2. Durante a alteração
+Entre as ideias iniciais estavam a visão superior, o combate por turnos inspirado em Pokémon e a possibilidade de um modo história.
 
-1. Modificar apenas o necessário.
-2. Preservar as funcionalidades não relacionadas.
-3. Evitar duplicar funções.
-4. Evitar criar sistemas paralelos sem necessidade.
-5. Não assumir que códigos de versões anteriores correspondem ao estado atual.
-6. Manter a compatibilidade com as dependências instaladas.
+Posteriormente, a direção visual passou a enfatizar a vida rural gaúcha, a ambientação histórica e as rotinas dos moradores.
 
-### 7.3. Depois da alteração
+A relação entre a proposta inicial e a versão rural atual ainda precisa ser confirmada na implementação.
 
-1. Iniciar o jogo.
-2. Verificar erros no terminal.
-3. Verificar o console do navegador.
-4. Testar a funcionalidade modificada.
-5. Testar os sistemas próximos que possam ter sido afetados.
-6. Examinar as diferenças no código.
-7. Criar um commit quando a alteração estiver validada.
-8. Enviar os commits ao GitHub quando o repositório remoto estiver configurado.
+### 8.2. Organização dos arquivos
 
-## 8. Controle de versão com Git
+Durante o desenvolvimento, foram mencionados arquivos comuns de uma aplicação Vite, incluindo `index.html`, `package.json`, `package-lock.json`, `vite.config.js` e `.gitignore`.
+
+Também foram mencionadas as pastas `src/`, `public/`, `combat/`, `data/`, `game/` e `milonga-base/`.
+
+A função exata de cada diretório deve ser confirmada por meio da inspeção dos arquivos existentes.
+
+### 8.3. Problemas durante alterações no código
+
+Uma substituição completa do arquivo principal `src/main.js` comprometeu o funcionamento do jogo.
+
+A versão anterior, considerada funcional, foi restaurada.
+
+Esse acontecimento demonstrou a importância de analisar o código existente antes de modificar arquivos importantes.
+
+As próximas alterações devem ser localizadas, controladas e reversíveis, preservando as funcionalidades não relacionadas ao problema em questão.
+
+### 8.4. Estado do desenvolvimento
+
+Os pontos de atenção registrados durante o desenvolvimento incluem:
+
+- Correção da estrutura visual da casa, especialmente da parede próxima ao telhado.
+- Eliminação de espaços vazios e transparências indevidas na construção.
+- Melhoria das animações dos personagens.
+- Implementação ou correção das atividades dos adultos durante o dia.
+- Verificação do ciclo de dia e noite.
+- Verificação das rotinas noturnas dos moradores.
+- Preservação das funcionalidades existentes.
+
+Esses pontos precisam ser reavaliados na versão atual antes da realização de novas alterações.
+
+## 9. Estado das funcionalidades
+
+A tabela abaixo reúne os principais comportamentos planejados e a situação conhecida a partir do histórico do projeto.
+
+| Funcionalidade | Resultado esperado | Situação conhecida |
+|---|---|---|
+| Cenário rural | Paisagem coerente com a proposta | Requisitos definidos; implementação a verificar |
+| Casa rural | Construção completa e opaca | Problema visual relatado |
+| Ciclo de dia e noite | Alternância contínua | Implementação a verificar |
+| Movimento do sol e da lua | Acompanhamento do ciclo | Implementação a verificar |
+| Iluminação das janelas | Janelas iluminadas à noite | Implementação a verificar |
+| Efeito de vento | Movimento ambiental | Implementação a verificar |
+| Fumaça da chaminé | Efeito ambiental | Implementação a verificar |
+| Atividades dos adultos | Trabalho durante o dia | Melhoria solicitada |
+| Animação de caminhada | Movimento dos membros | Melhoria solicitada |
+| Entrada dos moradores | Recolhimento noturno | Implementação a verificar |
+| Rotina do cavaleiro | Desmontar, deixar o cavalo e entrar | Implementação a verificar |
+| Rotina das crianças | Brincadeiras durante o dia e recolhimento noturno | Implementação a verificar |
+
+Para manter a documentação confiável, uma funcionalidade deve ser classificada como concluída somente após a confirmação no código e, quando aplicável, a realização de testes.
+
+## 10. Controle de versão com Git
 
 O Git foi instalado e inicializado na pasta do projeto.
 
-Inicialmente, o comando `git add .` falhou porque o diretório não era reconhecido como um repositório Git. Em seguida, foi executado `git init`.
+Inicialmente, o comando `git add .` falhou porque o diretório ainda não era reconhecido como um repositório Git. Em seguida, foi executado `git init`.
 
-Também foram configurados localmente o nome e o e-mail utilizados nos commits.
+Também foram configuradas localmente as informações utilizadas nos commits.
 
-O primeiro commit informado pelo usuário foi criado com a mensagem:
+O primeiro commit informado durante o desenvolvimento foi criado com a mensagem:
 
 `Registra versao funcional inicial do Milonga`
 
-O sucesso desse commit local foi informado durante a conversa. Entretanto, isso não comprova que a versão tenha sido publicada no GitHub.
+A criação desse commit local foi confirmada durante a conversa.
 
-### 8.1. Verificar o estado do repositório
+Posteriormente, o terminal mostrou que a branch `main` estava sincronizada com `origin/main`. Isso confirma o estado informado naquele momento, mas não garante que todos os arquivos desejados estejam publicados.
+
+### 10.1. Verificar o estado do repositório
 
 ```powershell
 git status
 ```
 
-### 8.2. Conferir o endereço remoto
+### 10.2. Conferir o endereço remoto
 
 ```powershell
 git remote -v
 ```
 
-### 8.3. Consultar os commits recentes
+### 10.3. Consultar os commits recentes
 
 ```powershell
 git log --oneline --decorate -10
 ```
 
-### 8.4. Conferir alterações locais
+### 10.4. Conferir alterações locais
 
 ```powershell
 git diff
 ```
 
-### 8.5. Registrar uma alteração
+### 10.5. Registrar uma alteração
+
+Depois de revisar e testar as alterações:
 
 ```powershell
-git add .
+git add caminho/do/arquivo
 git commit -m "Descreve a alteracao realizada"
 ```
 
-### 8.6. Enviar alterações ao GitHub
+É preferível adicionar arquivos específicos quando se deseja controlar exatamente o que será incluído no commit.
+
+### 10.6. Enviar alterações ao GitHub
 
 ```powershell
 git push
 ```
 
-Caso a branch ainda não esteja vinculada ao remoto, poderá ser necessário:
+Se a branch ainda não estiver vinculada ao remoto, poderá ser necessário configurar o envio inicial:
 
 ```powershell
 git push -u origin main
 ```
 
-### 8.7. Cuidados ao restaurar arquivos
+### 10.7. Recuperação e segurança
 
-O comando abaixo descarta as alterações locais não commitadas do arquivo indicado:
+Antes de restaurar um arquivo, confira as alterações locais.
+
+O comando abaixo descarta alterações locais não commitadas do arquivo indicado:
 
 ```powershell
 git restore caminho/do/arquivo
 ```
 
-Ele só deve ser utilizado depois de conferir o conteúdo que será perdido.
-
 Quando um commit já foi compartilhado, `git revert ID_DO_COMMIT` costuma ser uma opção mais segura para registrar uma reversão sem reescrever o histórico.
 
 Comandos destrutivos, como `git reset --hard`, `git clean` e force push, não devem ser executados sem análise prévia.
 
-## 9. Integração com o GitHub
+## 11. Integração com o GitHub
 
-O repositório informado é:
+O repositório remoto informado é:
 
-`https://github.com/BrunoCSMFrazao/Milonga.git`
+https://github.com/BrunoCSMFrazao/Milonga.git
 
-Foram orientados os seguintes comandos para conectar e publicar o projeto:
+A conexão com o GitHub foi configurada como parte do processo de desenvolvimento. O terminal posteriormente indicou que a branch `main` estava sincronizada com `origin/main`.
 
-```powershell
-git remote add origin https://github.com/BrunoCSMFrazao/Milonga.git
-git branch -M main
-git push -u origin main
-```
-
-A execução bem-sucedida desses comandos ainda precisa ser confirmada.
-
-Se o Git informar que `origin` já existe, verificar a configuração antes de tentar adicionar o remoto novamente:
-
-```powershell
-git remote -v
-```
-
-Para conferir o estado local e remoto:
+Para conferir novamente a situação:
 
 ```powershell
 git status
+git remote -v
 git branch -vv
+```
+
+Para atualizar as informações do repositório remoto:
+
+```powershell
 git fetch origin
+```
+
+Para verificar os commits existentes:
+
+```powershell
 git log --oneline --decorate --all -10
 ```
 
-Antes de executar operações de sincronização, verificar se existem commits diferentes no computador e no GitHub.
+Antes de realizar operações de sincronização, deve-se verificar se existem commits diferentes no computador e no GitHub.
 
-Não armazenar senhas, tokens de acesso ou outras credenciais no código, na documentação ou nos commits.
+Senhas, tokens de acesso e outras credenciais não devem ser armazenados no código, na documentação ou nos commits.
 
-## 10. Auditoria técnica necessária
+## 12. Diretrizes de manutenção
 
-Antes de implementar novas funcionalidades, deve ser realizada uma auditoria da versão atual.
+O desenvolvimento deve seguir princípios que preservem a estabilidade do projeto.
 
-A auditoria deve identificar:
+- Preservar a implementação funcional existente.
+- Evitar reescrever arquivos inteiros sem necessidade.
+- Analisar as dependências entre os sistemas antes de modificá-los.
+- Preferir alterações pequenas e localizadas.
+- Evitar modificar vários sistemas independentes ao mesmo tempo.
+- Testar as funcionalidades afetadas e suas dependências.
+- Conferir as diferenças no código antes de criar um commit.
+- Registrar as mudanças importantes no Git.
+- Manter a documentação atualizada.
+- Diferenciar funcionalidades comprovadas de recursos planejados.
+- Não considerar uma funcionalidade concluída sem verificar seu funcionamento.
+- Evitar incluir arquivos desnecessários no repositório.
 
-1. A estrutura real dos arquivos e diretórios.
-2. As versões do Phaser, Vite e demais dependências.
-3. Os pontos de entrada e as cenas do jogo.
-4. Os módulos e sistemas existentes.
-5. Os recursos gráficos, sonoros e outros arquivos de mídia.
-6. As funcionalidades implementadas e testadas.
-7. Os erros observados no terminal e no navegador.
-8. O estado do Git e a sincronização com o GitHub.
-9. Os problemas visuais e comportamentais comprovados.
-10. As hipóteses que ainda precisam de teste.
-11. As prioridades de correção.
-12. Os riscos de cada alteração planejada.
+Antes de modificar um arquivo importante, é necessário compreender sua implementação atual e identificar os possíveis impactos da mudança.
 
-A auditoria deve ser concluída antes de qualquer reescrita significativa.
+## 13. Plano de continuidade
 
-## 11. Lista de melhorias e pendências
+### Etapa 1 — Auditoria
 
-A lista abaixo reúne as tarefas identificadas durante o desenvolvimento. Cada item deve ser marcado como concluído somente após sua realização e validação.
+Examinar a estrutura dos arquivos, as dependências, a arquitetura do projeto e os sistemas existentes.
+
+### Etapa 2 — Verificação do repositório
+
+Confirmar a situação do Git local, o endereço remoto, o histórico de commits e a sincronização com o GitHub.
+
+### Etapa 3 — Diagnóstico
+
+Verificar os problemas visuais da casa, as animações, as atividades diurnas e os comportamentos noturnos.
+
+### Etapa 4 — Correções
+
+Implementar melhorias pequenas, priorizando problemas comprovados e preservando os sistemas existentes.
+
+### Etapa 5 — Testes
+
+Executar o jogo e verificar tanto as funcionalidades modificadas quanto os sistemas que possam ter sido afetados.
+
+### Etapa 6 — Registro
+
+Criar commits descritivos e enviar as versões validadas ao GitHub.
+
+### Etapa 7 — Documentação
+
+Registrar o estado atualizado do projeto, as mudanças realizadas, os problemas pendentes e as próximas tarefas.
+
+## 14. Lista de tarefas pendentes
+
+As tarefas abaixo devem ser marcadas como concluídas somente depois de sua realização e validação.
 
 - [ ] Confirmar a versão funcional atual do jogo.
-- [ ] Confirmar a conexão do repositório local com o GitHub.
-- [ ] Verificar se o primeiro commit foi publicado no remoto.
-- [ ] Inspecionar a estrutura real de arquivos e pastas.
+- [ ] Conferir a sincronização do repositório local com o GitHub.
+- [ ] Verificar se os documentos desejados foram publicados.
+- [ ] Inspecionar a estrutura real dos arquivos e diretórios.
 - [ ] Confirmar as versões das dependências.
 - [ ] Identificar as cenas e os sistemas existentes.
 - [ ] Corrigir a parede da casa próxima ao telhado.
@@ -505,49 +544,32 @@ A lista abaixo reúne as tarefas identificadas durante o desenvolvimento. Cada i
 - [ ] Verificar a rotina do cavaleiro e do cavalo.
 - [ ] Confirmar o comportamento das crianças durante o dia e a noite.
 - [ ] Testar colisões e entradas da casa.
-- [ ] Verificar se todas as funcionalidades existentes foram preservadas.
-- [ ] Atualizar a documentação após as alterações.
+- [ ] Verificar se as funcionalidades existentes foram preservadas.
+- [ ] Atualizar a documentação após as alterações relevantes.
 
-## 12. Critérios de qualidade
+## 15. Critérios de qualidade
 
-Uma alteração será considerada concluída quando:
+Uma alteração deve ser considerada concluída quando:
 
-- O jogo iniciar corretamente.
-- A funcionalidade solicitada funcionar como esperado.
-- Os sistemas relacionados continuarem funcionando.
-- A direção visual permanecer consistente.
-- Não forem introduzidos novos erros conhecidos.
-- A alteração estiver registrada em um commit descritivo.
-- A documentação corresponder ao estado real do projeto.
+- O projeto inicia corretamente.
+- A funcionalidade modificada apresenta o comportamento esperado.
+- Os sistemas relacionados continuam funcionando.
+- A identidade visual permanece consistente.
+- Não foram introduzidos novos erros conhecidos.
+- As alterações estão registradas em um commit descritivo.
+- A documentação corresponde ao estado real do projeto.
 
-Quando um teste não puder ser realizado, essa limitação deverá ser registrada. Não se deve afirmar que uma funcionalidade foi validada sem evidências.
+Quando não for possível realizar testes, essa limitação deve ser registrada. Não se deve afirmar que uma funcionalidade foi validada sem evidências.
 
-## 13. Próximas etapas recomendadas
+## 16. Histórico deste documento
 
-A continuidade do projeto deve começar pela confirmação da versão funcional atual.
+| Versão | Data | Alteração |
+|---|---|---|
+| 1.0 | 16/10/2026 | Consolidação do histórico conhecido, dos requisitos visuais e comportamentais e das orientações de manutenção. |
+| 1.1 | 16/10/2026 | Organização dos requisitos, consolidação das informações complementares e atualização das diretrizes de continuidade e controle de versão. |
 
-A sequência recomendada é:
-
-1. Verificar o estado do Git.
-2. Confirmar a conexão e a sincronização com o GitHub.
-3. Inspecionar os arquivos reais do projeto.
-4. Identificar os sistemas responsáveis pela casa, pelos personagens e pelo ciclo ambiental.
-5. Reproduzir os problemas relatados.
-6. Escolher a menor alteração capaz de corrigir cada problema.
-7. Testar cada mudança antes de iniciar outra.
-8. Registrar versões funcionais no Git.
-9. Atualizar esta documentação.
-
-A prioridade é preservar o que funciona e evoluir o Milonga gradualmente, com alterações controladas e verificáveis.
-
-## 14. Histórico deste documento
-
-| Data | Alteração |
-|---|---|
-| 16/10/2026 | Consolidação do histórico conhecido, dos requisitos visuais e comportamentais, das orientações de manutenção e do estado conhecido do Git e do GitHub. |
-
-O histórico deverá ser atualizado a cada etapa relevante do desenvolvimento. Os registros devem distinguir funcionalidades planejadas, implementadas e efetivamente testadas.
+Este documento deve ser atualizado a cada etapa relevante do desenvolvimento. Os registros precisam distinguir funcionalidades planejadas, implementadas e efetivamente testadas.
 
 ---
 
-**Fim da documentação.**
+**Fim da documentação do projeto Milonga.**
