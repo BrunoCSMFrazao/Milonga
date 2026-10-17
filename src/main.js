@@ -289,6 +289,20 @@ class Milonga extends Phaser.Scene {
     g.fillStyle(0x895a3b, 1);
     g.fillRect(169, 250, 226, 101);
 
+    // Preenche a empena que ficava vazada sob o telhado.
+    g.fillStyle(0x895a3b, 1);
+    g.fillPoints([
+      { x: 169, y: 250 },
+      { x: 281, y: 194 },
+      { x: 395, y: 250 }
+    ], true);
+
+    g.fillStyle(0x71472f, 1);
+    for (let y = 204; y < 250; y += 12) {
+      const metade = ((y - 194) / (250 - 194)) * 114;
+      g.fillRect(281 - metade, y, metade * 2, 2);
+    }
+
     // Tábuas horizontais.
     g.fillStyle(0x71472f, 1);
     for (let y = 258; y < 347; y += 12) {
@@ -524,12 +538,27 @@ class Milonga extends Phaser.Scene {
       corpo.fillRect(1, -13, 6, 9);
     }
 
+    // Cabeça maior e arredondada, com traços simples em pixel art.
     cabeca.fillStyle(0xd5a174, 1);
-    cabeca.fillRect(-4, -39, 9, 10);
+    cabeca.fillEllipse(-10, -50, 20, 19);
+    cabeca.fillRect(-12, -44, 3, 6);
+    cabeca.fillRect(9, -44, 3, 6);
 
+    // Cabelo e costeletas moldam o rosto sem esconder os olhos.
     cabeca.fillStyle(0x493025, 1);
-    cabeca.fillRect(-5, -42, 11, 5);
-    cabeca.fillRect(-10, -39, 21, 3);
+    cabeca.fillRect(-10, -50, 20, 5);
+    cabeca.fillRect(-10, -46, 3, 7);
+    cabeca.fillRect(7, -46, 3, 7);
+    if (mulher) {
+      cabeca.fillRect(-11, -42, 3, 11);
+      cabeca.fillRect(8, -42, 3, 11);
+    }
+
+    // Olhos e boca deixam a expressão legível no tamanho do cenário.
+    cabeca.fillStyle(0x38251d, 1);
+    cabeca.fillRect(-5, -42, 2, 2);
+    cabeca.fillRect(3, -42, 2, 2);
+    cabeca.fillRect(-1, -36, 3, 1);
 
     // Os braços giram a partir do ombro.
     const bracoE = this.add.container(-8, -1);
@@ -756,7 +785,7 @@ class Milonga extends Phaser.Scene {
     botao.setInteractive({ useHandCursor: true });
     botao.on('pointerover', () => botao.setColor('#ffffff'));
     botao.on('pointerout', () => botao.setColor('#fff0c9'));
-    botao.on('pointerdown', () => botao.setText('EM BREVE'));
+    botao.on('pointerdown', () => this.interface.setVisible(false));
 
     const frase = this.add.text(
       480, 501,
